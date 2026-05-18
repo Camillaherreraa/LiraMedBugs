@@ -1,0 +1,44 @@
+/* Adicione estas animações ao seu arquivo animations.css */
+@keyframes flipLeftPage {
+    from {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(-180deg);
+    }
+}
+
+@keyframes flipRightPage {
+    from {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | LiraMed</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="LiraMed">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-arrow-right"></i> Voltar para Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="auth-page">
+        <div class="auth-box">
+            <div class="auth-header">
+                <img src="images/logo.png" alt="LiraMed">
+                <h2>Acesso ao Sistema</h2>
+            </div>
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="tab-login">Logir</div>
+                <div class="auth-tab" id="tab-register">Cadrastro</div>
+            </div>
+
+            <div class="auth-form-container">
+                <!-- Form Login -->
+                <form id="form-login" class="auth-form active">
+                    <div id="login-message" class="auth-message"></div>
+                    
+                    <button type="button" class="btn-google" id="btn-google-login">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                        Entrar com Google
+                    </button>
+                    
+                    <div class="auth-divider"><span>OU</span></div>
+
+                    <div class="form-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="login-email" placeholder="Sua Senha" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="login-password" placeholder="Sua Senha" required>
+                    </div>
+                    <div style="text-align: right; margin-bottom: 15px;">
+                        <a href="#" id="forgot-password" style="color: var(--primary-dark-blue); font-size: 0.9rem; text-decoration: underline;">Esqueci minha senha</a>
+                    </div>
+                    <button type="submit" class="btn">Entrar</button>
+                </form>
+
+                <!-- Form Cadastro -->
+                <form id="form-register" class="auth-form">
+                    <div id="reg-message" class="auth-message"></div>
+
+                    <button type="button" class="" id="btn-google-register">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                        Cadastrar com Google
+                    </button>
+                    
+                    <div class="auth-divider"><span>OU</span></div>
+
+                    <div class="form-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="reg-name" placeholder="Nome Completo">
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="reg-email" placeholder="Seu E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="reg-password" placeholder="Crie uma Senha" required>
+                    </div>
+                    <button type="submit" class="btn">Criar Conta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script como module para usar o Firebase v9/v10 -->
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiraMed - Distribuidora Hospitalar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="LiraMed">
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#catalogos">Catálogo</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="login.html" class="nav-login-btn">Login / Cadastro <i
+                                class="fas fa-sign-in-alt"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-brand">
+                <span class="hero-lira">Lira</span><span class="hero-med">Med</span>
+                <img src="images/brasao.png" alt="Brasão" class="hero-brasao">
+            </div>
+            <p>Distribuidora especializada em produtos hospitalares</p>
+            <a href="#catalogos" class="btn">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <section id="sobre" class="about">
+        <div class="container">
+            <h2>Sobre a LiraMed</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>A LiraMed nasce com o propósito de oferecer soluções inovadoras e de qualidade para o setor da
+                        saúde. Atuamos como distribuidora hospitalar, comprometidos em fornecer produtos confiáveis que
+                        contribuem diretamente para o bem-estar de pacientes e a excelência no atendimento médico.</p>
+                    <strong>Missão</strong>
+                    <p>Fornecer produtos hospitalares com qualidade, eficiência e responsabilidade, garantindo confiança
+                        aos profissionais de saúde e segurança aos pacientes.</p>
+                    <strong>Visão</strong>
+                    <p>Ser referência no mercado hospitalar, reconhecida pela excelência em atendimento, inovação e
+                        compromisso com a saúde.</p>
+                    <strong>Valores</strong>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>Qualidade: Garantir produtos que atendam aos mais altos padrões.</li>
+                        <li>Ética: Agir com transparência, respeito e responsabilidade em todas as relações.</li>
+                        <li>Inovação: Buscar constantemente novas soluções para o setor da saúde.</li>
+                        <li>Compromisso: Estar ao lado de nossos clientes, oferecendo suporte e confiança.</li>
+                        <li>Cuidado com a Vida: Colocar o paciente sempre em primeiro lugar.</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="images/sobrenos.jpg" alt="Sobre a LiraMed">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalogos" class="catalogs">
+        <div class="container">
+            <h2>Nosso Catálogo</h2>
+            <p>Explore nossos produtos através do catálogo digital</p>
+
+            <div class="catalog-viewer">
+                <div class="catalog-display">
+                    <div class="catalog-slide active" data-catalog="1">
+                        <div class="catalog-page left-page">
+                            <img src="images/catalogos/catalago_digital_da_liramed_page-0001.jpg" alt="Página 1">
+                        </div>
+                        <div class="catalog-page right-page">
+                            <img src="images/catalogos/catalago_digital_da_liramed_page-0002.jpg" alt="Página 2">
+                        </div>
+                    </div>
+
+                    <div class="catalog-slide" data-catalog="2">
+                        <div class="catalog-page left-page">
+                            <img src="images/catalogos/catalago_digital_da_liramed_page-0003.jpg" alt="Página 3">
+                        </div>
+                        <div class="catalog-page right-page">
+                            <img src="images/catalogos/catalago_digital_da_liramed_page-0004.jpg" alt="Página 4">
+                        </div>
+                    </div>
+
+                    <div class="catalog-slide" data-catalog="3">
+                        <div class="catalog-page left-page">
+                            <img src="images/catalogos/catalago_digital_da_liramed_page-0005.jpg" alt="Página 5">
+                        </div>
+                        <div class="catalog-page right-page">
+                            <img src="images/catalogos/catalago_digital_da_liramed_page-0006.jpg" alt="Página 6">
+                        </div>
+                    </div>
+
+                    <div class="catalog-slide" data-catalog="4">
+                        <div class="catalog-page left-page">
+                            <img src="images/catalogos/catalago_digital_da_liramed_page-0007.jpg" alt="Página 7">
+                        </div>
+                        <div class="catalog-page right-page">
+                            <img src="images/catalogos/catalago_digital_da_liramed_page-0008.jpg" alt="Página 8">
+                        </div>
+                    </div>
+
+                    <div class="catalog-slide" data-catalog="5">
+                        <div class="catalog-page left-page">
+                            <img src="images/catalogos/catalago_digital_da_liramed_page-0009.jpg" alt="Página 9">
+                        </div>
+                    </div>
+
+                    <div class="catalog-nav">
+                        <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+
+                    <div class="slide-counter">
+                        <span class="current-slide">1</span> / <span class="total-slides">5</span>
+                    </div>
+                </div>
+
+                <div class="catalog-downloads">
+                    <h3>Baixe nosso catálogo</h3>
+                    <ul class="download-list">
+                        <li><a href="catalogos/catalago_digital_da_liramed.pdf" download><i class="fas fa-file-pdf"></i>
+                                Catálogo de Equipamentos Hospitalares</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contact">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <ul>
+                        <li><a href="https://wa.me/5581999036531" target="_blank"><i class="fab fa-whatsapp"></i> (81)
+                                99903-6531</a></li>
+                        <li><a href="https://www.instagram.com/liramed.liramed?utm_source=ig_web_button_share_sheet&igsh=MWtjMWlpM3V3ZWFjZQ=="
+                                target="_blank"><i class="fab fa-instagram"></i> @liramed_distribuidora</a></li>
+                        <li><a href="mailto:comercial@liramed.com.br" target="_blank"><i class="fas fa-envelope"></i>
+                                comercial@liramed.com.br</a></li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm" action="https://formsubmit.co/comercial@liramed.com.br" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Seu Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Seu E-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Seu Telefone">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Sua Mensagem" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">ENVIAR MENSAGEM</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo_ricar2.png" alt="LiraMed">
+                    <p>Soluções hospitalares de qualidade</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#catalogos">Catálogo</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="https://wa.me/5581999036531" target="_blank"><i class="fab fa-whatsapp"></i> (81)
+                                99903-6531</a></li>
+                        <li><a href="mailto:comercial@liramed.com.br" target="_blank"><i class="fas fa-envelope"></i>
+                                comercial@liramed.com.br</a></li>
+                        <li><a href="https://www.instagram.com/liramed.liramed?utm_source=ig_web_button_share_sheet&igsh=MWtjMWlpM3V3ZWFjZQ=="
+                                target="_blank"><i class="fab fa-instagram"></i> @liramed_distribuidora</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LiraMed - Distribuidora Hospitalar. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

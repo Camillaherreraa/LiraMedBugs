@@ -11,7 +11,8 @@ import {
     updateProfile,
     deleteUser,
     linkWithCredential,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -93,12 +94,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Cadastro com Email/Senha
         registerForm.addEventListener('submit', (e) => {
-           
+            e.preventDefault();
             const name = document.getElementById('reg-name').value.trim();
             const email = document.getElementById('reg-email').value.trim();
             const password = document.getElementById('reg-password').value;
             const messageEl = document.getElementById('reg-message');
             const submitBtn = registerForm.querySelector('button[type="submit"]');
+
+            // BUG 13: validação de nome ausente — aceita qualquer valor, incluindo números e caracteres especiais
+            if (!name) {
+                showMessage(messageEl, 'O nome é obrigatório.', 'error');
+                return;
+            }
 
             if (password.length < 6) {
                 showMessage(messageEl, 'A senha deve ter pelo menos 6 caracteres.', 'error');

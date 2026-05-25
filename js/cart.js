@@ -1,4 +1,3 @@
-// cart.js - Lógica do Carrinho Funcional com LocalStorage
 document.addEventListener('DOMContentLoaded', () => {
     const cartSidebar = document.getElementById('cart-sidebar');
     const cartOverlay = document.getElementById('cart-overlay');
@@ -13,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let cart = JSON.parse(localStorage.getItem('liraMedCart')) || [];
 
     function updateCartUI() {
-        // Atualizar contador flutuante
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
         if (totalItems > 0) {
             cartCountDisplay.textContent = totalItems;
@@ -22,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cartCountDisplay.style.display = 'none';
         }
 
-        // Renderizar itens no sidebar
         cartItemsContainer.innerHTML = '';
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<div class="empty-cart-msg">Seu carrinho está vazio.</div>';
@@ -48,14 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Atualizar Total
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         cartTotalPrice.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
 
-        // Salvar no localStorage
         localStorage.setItem('liraMedCart', JSON.stringify(cart));
 
-        // Adicionar eventos de remover e alterar quantidade
         document.querySelectorAll('.remove-item').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const id = e.currentTarget.getAttribute('data-id');
@@ -91,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addToCart(title, priceStr) {
-        // Converter "R$ 1.299,90" para 1299.90
         const priceNum = parseFloat(priceStr.replace('R$', '').replace(/\./g, '').replace(',', '.').trim());
         const id = title.toLowerCase().replace(/\s+/g, '-');
 
@@ -130,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cartOverlay.classList.remove('open');
     }
 
-    // Eventos de clique nos botões "Adicionar ao Carrinho"
     addCartBtns.forEach(btn => {
         btn.addEventListener('click', function () {
             const productCard = this.closest('.product-card');
@@ -139,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             addToCart(title, price);
 
-            // Feedback visual no botão
             const originalText = this.innerHTML;
             this.innerHTML = '<i class="fas fa-check"></i> Adicionado';
             this.style.backgroundColor = 'var(--secondary-green)';
@@ -150,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Eventos da Sidebar
     if (cartFloat) {
         cartFloat.style.cursor = 'pointer';
         cartFloat.addEventListener('click', openCart);
@@ -159,6 +149,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
     if (btnClearCart) btnClearCart.addEventListener('click', clearCart);
 
-    // Inicialização da UI do carrinho (carregando do localStorage)
     updateCartUI();
 });

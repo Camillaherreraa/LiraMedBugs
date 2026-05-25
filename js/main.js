@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // =============================================
-    // Navegação suave
-    // =============================================
+    
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -16,9 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // =============================================
-    // Carrossel de Catálogos (2 páginas lado a lado)
-    // =============================================
+    
     const slides = document.querySelectorAll('.catalog-slide');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
@@ -50,12 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Inicia o carrossel no primeiro slide
+    
     showSlide(0);
 
-    // =============================================
-    // Funcionalidade de Zoom nas imagens
-    // =============================================
+    
     function setupZoomForImages() {
         document.querySelectorAll('.catalog-page').forEach(page => {
             let initialDistance = 0;
@@ -66,23 +60,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (!img) return;
 
-            // Click para sobrepor imagem (desktop e mobile)
             img.addEventListener('click', (e) => {
                 e.stopPropagation();
                 if (!isPinching) {
-                    // Reset z-index de todas as imagens do slide atual
                     const currentSlideImages = page.closest('.catalog-slide').querySelectorAll('img');
                     currentSlideImages.forEach(otherImg => {
                         otherImg.style.zIndex = '1';
                     });
 
-                    // Sobrepor apenas a imagem clicada
                     img.style.zIndex = '10000';
                     img.style.position = 'relative';
                 }
             });
 
-            // Pinch zoom para mobile
             page.addEventListener('touchstart', (e) => {
                 if (e.touches.length === 2) {
                     e.preventDefault();
@@ -142,10 +132,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Configurar zoom inicial
     setupZoomForImages();
 
-    // Reconfigurar quando slides mudam
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
             setTimeout(setupZoomForImages, 100);
@@ -158,9 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // =============================================
-    // Suporte a gestos touch para mobile
-    // =============================================
+    
     const catalogDisplay = document.querySelector('.catalog-display');
     let startX = 0;
     let startY = 0;
@@ -181,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         catalogDisplay.addEventListener('touchmove', (e) => {
             if (isPinching || e.touches.length === 2) {
-                return; // Deixa o pinch zoom funcionar
+                return; 
             }
 
             if (!startX || !startY) return;
@@ -222,9 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, { passive: true });
     }
 
-    // =============================================
-    // Navegação por teclado
-    // =============================================
+
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
             showSlide(currentSlide - 1);
@@ -233,9 +217,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // =============================================
-    // Animações ao Scroll
-    // =============================================
     function animateOnScroll() {
         const elements = document.querySelectorAll('.about-content, .catalog-viewer, .contact-grid');
         const windowHeight = window.innerHeight;

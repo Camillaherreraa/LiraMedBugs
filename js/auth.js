@@ -1,4 +1,4 @@
-// auth.js - Gerenciamento de Autenticação usando Firebase (Módulo v10)
+
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
@@ -42,7 +42,6 @@ try {
     console.warn("Firebase não inicializado corretamente. Verifique firebaseConfig.", e);
 }
 
-// Função auxiliar para mensagens
 function showMessage(element, text, type) {
     if (!element) return;
     element.textContent = text;
@@ -70,14 +69,12 @@ function handleFirebaseError(error, messageEl) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Lógica da Página de Login/Cadastro
     const loginTab = document.getElementById('tab-login');
     const registerTab = document.getElementById('tab-register');
     const loginForm = document.getElementById('form-login');
     const registerForm = document.getElementById('form-register');
 
     if (loginTab && registerTab && loginForm && registerForm) {
-        // Alternar abas
         loginTab.addEventListener('click', () => {
             loginTab.classList.add('active');
             registerTab.classList.remove('active');
@@ -89,10 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
             registerTab.classList.add('active');
             loginTab.classList.remove('active');
             registerForm.classList.add('active');
-            // loginForm.classList.remove('active');
         });
 
-        // Cadastro com Email/Senha
         registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('reg-name').value.trim();
@@ -101,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const messageEl = document.getElementById('reg-message');
             const submitBtn = registerForm.querySelector('button[type="submit"]');
 
-            // BUG 13: validação de nome ausente — aceita qualquer valor, incluindo números e caracteres especiais
             if (!name) {
                 showMessage(messageEl, 'O nome é obrigatório.', 'error');
                 return;
@@ -122,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    // Atualizar o perfil com o nome
                     return updateProfile(userCredential.user, { displayName: name });
                 })
                 .then(() => {
@@ -136,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
 
-        // Login com Email/Senha
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
@@ -164,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
 
-        // Esqueci minha senha
         const forgotPasswordBtn = document.getElementById('forgot-password');
         if (forgotPasswordBtn) {
             forgotPasswordBtn.addEventListener('click', (e) => {
@@ -187,7 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Login com Google
         const googleBtns = document.querySelectorAll('.btn-google');
         const provider = new GoogleAuthProvider();
 
@@ -210,7 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             const email = error.customData.email;
                             const pendingCred = GoogleAuthProvider.credentialFromError(error);
                             
-                            // Pergunta a senha para o usuário
                             const password = prompt(`O e-mail ${email} já possui uma conta. Digite sua senha para vincular sua conta do Google:`);
                             
                             if (password) {
@@ -235,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Se o usuário já estiver logado, redireciona para a loja
         if (auth) {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
@@ -245,31 +233,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 2. Proteção e Lógica da Página da Loja
     const isLojaPage = window.location.pathname.includes('loja.html');
 
     if (isLojaPage) {
         if (!auth) {
-            // Placeholder behaviour se não houver Firebase
             document.querySelectorAll('.user-name-display').forEach(el => el.textContent = "Erro de Configuração");
         } else {
-            // Monitora o estado da autenticação
             onAuthStateChanged(auth, (user) => {
                 if (user) {
-                    // Usuário logado
                     const userNameDisplays = document.querySelectorAll('.user-name-display');
                     const displayName = user.displayName || user.email.split('@')[0];
                     userNameDisplays.forEach(el => {
                         el.textContent = `Olá, ${displayName}`;
                     });
                 } else {
-                    // Não está logado, redireciona para login
                     window.location.href = 'login.html';
                 }
             });
         }
 
-        // Lógica de Logout
         const logoutBtn = document.getElementById('btn-logout');
         if (logoutBtn && auth) {
             logoutBtn.addEventListener('click', () => {
@@ -281,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Lógica do Modal de Perfil
         const btnProfile = document.getElementById('btn-profile');
         const profileModal = document.getElementById('profile-modal');
         const closeProfileModal = document.getElementById('close-profile-modal');
@@ -291,7 +272,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const profileMessage = document.getElementById('profile-message');
 
         if (btnProfile && profileModal && auth) {
-            // Abrir modal e preencher nome atual
             btnProfile.addEventListener('click', () => {
                 const currentUser = auth.currentUser;
                 if (currentUser) {
@@ -300,7 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 profileModal.style.display = 'block';
             });
 
-            // Fechar modal
             closeProfileModal.addEventListener('click', () => {
                 profileModal.style.display = 'none';
             });
@@ -311,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Atualizar Perfil
             if (formUpdateProfile) {
                 formUpdateProfile.addEventListener('submit', (e) => {
                     e.preventDefault();
@@ -322,7 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (currentUser) {
                         updateProfile(currentUser, { displayName: novoNome }).then(() => {
                             showMessage(profileMessage, 'Perfil atualizado com sucesso!', 'success');
-                            // Atualizar na interface
                             const userNameDisplays = document.querySelectorAll('.user-name-display');
                             userNameDisplays.forEach(el => {
                                 el.textContent = `Olá, ${novoNome}`;
@@ -335,7 +312,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Excluir Conta
             if (btnDeleteAccount) {
                 btnDeleteAccount.addEventListener('click', () => {
                     const confirmDelete = confirm("Tem certeza absoluta que deseja excluir sua conta? Esta ação não pode ser desfeita e você perderá o acesso.");
@@ -346,7 +322,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 alert("Conta excluída com sucesso.");
                                 window.location.href = 'index.html';
                             }).catch(error => {
-                                // Se precisar de reautenticação
                                 if (error.code === 'auth/requires-recent-login') {
                                     alert("Por motivos de segurança, você precisa fazer login novamente antes de excluir sua conta.");
                                     signOut(auth).then(() => window.location.href = 'login.html');

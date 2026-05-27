@@ -89,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
             const name = document.getElementById('reg-name').value.trim();
             const email = document.getElementById('reg-email').value.trim();
             const password = document.getElementById('reg-password').value;
@@ -120,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .then(() => {
                     showMessage(messageEl, 'Cadastro realizado com sucesso! Redirecionando...', 'success');
-                    setTimeout(() => { window.location.href = 'loja.html'; }, 1500);
+                    setTimeout(() => { window.location.href = 'loja.html'; }, 150000);
                 })
                 .catch((error) => {
                     handleFirebaseError(error, messageEl);
@@ -135,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('login-password').value;
             const messageEl = document.getElementById('login-message');
             const submitBtn = loginForm.querySelector('button[type="submit"]');
+
 
             if (!auth) {
                 showMessage(messageEl, 'Firebase não configurado.', 'error');

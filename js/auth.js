@@ -86,8 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
             registerTab.classList.add('active');
             loginTab.classList.remove('active');
             registerForm.classList.add('active');
+            //loginForm.classList.remove('active');
         });
-
+                
         registerForm.addEventListener('submit', (e) => {
             const name = document.getElementById('reg-name').value.trim();
             const email = document.getElementById('reg-email').value.trim();
@@ -227,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (auth) {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
-                    window.location.href = 'loja.html';
+                    window.location.href = 'loj.html';
                 }
             });
         }
